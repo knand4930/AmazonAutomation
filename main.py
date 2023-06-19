@@ -12,6 +12,7 @@ from selenium.webdriver.support import wait
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support.select import Select
+import csv
 
 # from amazoncaptcha import AmazonCaptcha
 # from PIL import Image
@@ -37,7 +38,8 @@ def open_browser(url, username, password, keywords, CardNumber, CardHolder, Expi
     password_field.send_keys(password)
     password_submit = driver.find_element(By.XPATH, "/html/body/div[1]/div[1]/div[2]/div/div[2]/div[1]/div/div/form/div/div[2]/span/span/input")
     password_submit.click()    
-    time.sleep(40)
+    time.sleep(20)
+
     # captch = driver.find_element(By.XPATH, '/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div/form/div/div[2]/div[1]/div/div[1]/img')
     # captcha = AmazonCaptcha.fromlink(captch)
     # solution = captcha.solve(keep_logs=True)
@@ -46,8 +48,7 @@ def open_browser(url, username, password, keywords, CardNumber, CardHolder, Expi
 
     #Captcha
     # /html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div/form/div/div[2]/input
-    # /html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div/form/div/div[4]/span/span/input
-    
+    # /html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div/form/div/div[4]/span/span/input    
     # Perform item search and add to cart
 
     search_field = driver.find_element("id", "twotabsearchtextbox")
@@ -420,51 +421,47 @@ def open_browser(url, username, password, keywords, CardNumber, CardHolder, Expi
     driver.quit()
 
 if __name__ == "__main__":
-    urls = [
-        "https://www.amazon.in/ap/signin?openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.amazon.in%2F%3Fref_%3Dnav_ya_signin&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.assoc_handle=inflex&openid.mode=checkid_setup&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&",
-        "https://www.amazon.in/ap/signin?openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.amazon.in%2F%3Fref_%3Dnav_ya_signin&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.assoc_handle=inflex&openid.mode=checkid_setup&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&",
-    ]
 
-    usernames = [
-        "Kingntrntnl@gmail.com",
-        "tradersv358@gmail.com",
-    ]
+    csv_file = "data.csv"    
+    data = []
+    with open(csv_file, "r") as file:
+        reader = csv.reader(file)
+        next(reader)
+        for row in reader:
+            data.append(row)
     
-    passwords = [
-        "Abcd@1234",
-        "Abcd@1234",
-    ]
+    urls = []
+    usernames = []
+    passwords = []
+    keywords = []
+    CardNumber = []
+    CardHolder = []
+    ExpireMonth = []
+    ExpireYear = []
+    cvv = []
 
-    keywords = [
-        "sumsung ",
-        "one plus",
-    ]
+    for item in data:
+        urls.append(item[0])
+        usernames.append(item[1])
+        passwords.append(item[2])
+        keywords.append(item[3])
+        CardNumber.append(item[4])
+        CardHolder.append(item[5])
+        ExpireMonth.append(item[6])
+        ExpireYear.append(item[7])
+        cvv.append(item[8])
 
-    CardNumber = [
-        "5321350208188946",
-        "5321350208189043",
-    ]
+    urls = urls
+    usernames = usernames    
+    passwords = passwords
+    keywords = keywords
+    CardNumber = CardNumber
+    CardHolder = CardHolder
+    ExpireMonth = ExpireMonth
+    ExpireYear = ExpireYear
+    cvv = cvv
 
-    CardHolder = [
-        "Kingntrntnl",
-        "Kinginter",
-    ]
-
-    ExpireMonth = [
-        "06",
-        "06",
-    ]
-
-    ExpireYear = [
-        "2023",
-        "2023",
-    ]
-
-    cvv = [
-        "556",
-        "913",
-    ]
-
+    print(usernames, passwords, keywords, CardNumber, CardHolder, ExpireMonth, ExpireYear, cvv)
     processes = []
 
     for i in range(len(urls)):
