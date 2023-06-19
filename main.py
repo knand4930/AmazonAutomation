@@ -113,7 +113,7 @@ def open_browser(url, username, password, keywords, CardNumber, CardHolder, Expi
         add_cvv.send_keys(cvv)
         time.sleep(10)
 
-        save_card = driver.find_element(By.XPATH, "/html/body/div[5]/div[1]/div/div[2]/div/div/div[1]/div[1]/div/div[5]/div/div[3]/div/div/div[2]/div/div[2]/div/div/form/div/div[1]/div/div[1]/div[3]/div/div/div/div/div/div[2]/div[9]/div/div[1]/div/label/input")
+        save_card = driver.find_element(By.XPATH, "/html/body/div[5]/div[1]/div/div[2]/div/div/div[1]/div[1]/div/div[5]/div/div[3]/div/div/div[2]/div/div[2]/div/div/form/div/div[1]/div/div[1]/div[3]/div/div/div/div/div/div[2]/div[11]/div/div[1]/div/label/input")
         save_card.click()
         time.sleep(10)
 
@@ -185,7 +185,7 @@ def open_browser(url, username, password, keywords, CardNumber, CardHolder, Expi
             add_cvv.send_keys(cvv)
             time.sleep(10)
 
-            save_card = driver.find_element(By.XPATH, "/html/body/div[5]/div[1]/div/div[2]/div/div/div[1]/div[1]/div/div[5]/div/div[3]/div/div/div[2]/div/div[2]/div/div/form/div/div[1]/div/div[1]/div[3]/div/div/div/div/div/div[2]/div[9]/div/div[1]/div/label/input")
+            save_card = driver.find_element(By.XPATH, "/html/body/div[5]/div[1]/div/div[2]/div/div/div[1]/div[1]/div/div[5]/div/div[3]/div/div/div[2]/div/div[2]/div/div/form/div/div[1]/div/div[1]/div[3]/div/div/div/div/div/div[2]/div[11]/div/div[1]/div/label/input")
             save_card.click()
             time.sleep(10)
 
@@ -256,7 +256,7 @@ def open_browser(url, username, password, keywords, CardNumber, CardHolder, Expi
                 add_cvv.send_keys(cvv)
                 time.sleep(10)
 
-                save_card = driver.find_element(By.XPATH, "/html/body/div[5]/div[1]/div/div[2]/div/div/div[1]/div[1]/div/div[5]/div/div[3]/div/div/div[2]/div/div[2]/div/div/form/div/div[1]/div/div[1]/div[3]/div/div/div/div/div/div[2]/div[9]/div/div[1]/div/label/input")
+                save_card = driver.find_element(By.XPATH, "/html/body/div[5]/div[1]/div/div[2]/div/div/div[1]/div[1]/div/div[5]/div/div[3]/div/div/div[2]/div/div[2]/div/div/form/div/div[1]/div/div[1]/div[3]/div/div/div/div/div/div[2]/div[11]/div/div[1]/div/label/input")
                 save_card.click()
                 time.sleep(10)
 
@@ -328,7 +328,7 @@ def open_browser(url, username, password, keywords, CardNumber, CardHolder, Expi
                     time.sleep(10)
 
                     #field
-                    save_card = driver.find_element(By.XPATH, "/html/body/div[5]/div[1]/div/div[2]/div/div/div[1]/div[1]/div/div[5]/div/div[3]/div/div/div[2]/div/div[2]/div/div/form/div/div[1]/div/div[1]/div[3]/div/div/div/div/div/div[2]/div[9]/div/div[1]/div/label/input")
+                    save_card = driver.find_element(By.XPATH, "/html/body/div[5]/div[1]/div/div[2]/div/div/div[1]/div[1]/div/div[5]/div/div[3]/div/div/div[2]/div/div[2]/div/div/form/div/div[1]/div/div[1]/div[3]/div/div/div/div/div/div[2]/div[11]/div/div[1]/div/label/input")
                     save_card.click()
                     time.sleep(10)
 
@@ -400,7 +400,7 @@ def open_browser(url, username, password, keywords, CardNumber, CardHolder, Expi
                         time.sleep(10)
 
                         #field
-                        save_card = driver.find_element(By.XPATH, "/html/body/div[5]/div[1]/div/div[2]/div/div/div[1]/div[1]/div/div[5]/div/div[3]/div/div/div[2]/div/div[2]/div/div/form/div/div[1]/div/div[1]/div[3]/div/div/div/div/div/div[2]/div[9]/div/div[1]/div/label/input")
+                        save_card = driver.find_element(By.XPATH, "/html/body/div[5]/div[1]/div/div[2]/div/div/div[1]/div[1]/div/div[5]/div/div[3]/div/div/div[2]/div/div[2]/div/div/form/div/div[1]/div/div[1]/div[3]/div/div/div/div/div/div[2]/div[11]/div/div[1]/div/label/input")
                         save_card.click()
                         time.sleep(10)
 
@@ -441,7 +441,6 @@ if __name__ == "__main__":
     cvv = []
 
     for item in data:
-        print(item[0])
         urls.append(item[0])
         usernames.append(item[1])
         passwords.append(item[2])
@@ -462,7 +461,7 @@ if __name__ == "__main__":
     ExpireYear = ExpireYear
     cvv = cvv
 
-    print(urls)
+    print(usernames, passwords, keywords, CardNumber, CardHolder, ExpireMonth, ExpireYear, cvv)
     processes = []
 
     for i in range(len(urls)):
@@ -472,3 +471,5 @@ if __name__ == "__main__":
     
     for process in processes:
         process.join()
+
+
