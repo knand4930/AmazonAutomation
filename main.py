@@ -441,6 +441,7 @@ if __name__ == "__main__":
     cvv = []
 
     for item in data:
+        print(item[0])
         urls.append(item[0])
         usernames.append(item[1])
         passwords.append(item[2])
@@ -461,7 +462,7 @@ if __name__ == "__main__":
     ExpireYear = ExpireYear
     cvv = cvv
 
-    print(usernames, passwords, keywords, CardNumber, CardHolder, ExpireMonth, ExpireYear, cvv)
+    print(urls)
     processes = []
 
     for i in range(len(urls)):
